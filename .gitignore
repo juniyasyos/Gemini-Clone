@@ -1,24 +1,29 @@
-# Logs
-logs
-*.log
+# Umum
+.DS_Store
+Thumbs.db
+
+# Artefact
+artefact/node_modules/
+artefact/.vite/
+artefact/public/
+artefact/yarn.lock
+
+# Next.js
+server/nextjs/node_modules/
+server/nextjs/.env
+server/nextjs/.next/
+server/nextjs/out/
+server/nextjs/yarn.lock
+
+# Python
+server/python/__pycache__/
+
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Sistem Operasi
+*.swp
+*.swo
+*.tmp
