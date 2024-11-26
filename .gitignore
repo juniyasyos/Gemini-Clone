@@ -1,6 +1,7 @@
 # Umum
 .DS_Store
 Thumbs.db
+.env
 
 # Artefact
 artefact/node_modules/
@@ -9,14 +10,16 @@ artefact/public/
 artefact/yarn.lock
 
 # Next.js
-server/nextjs/node_modules/
-server/nextjs/.env
-server/nextjs/.next/
-server/nextjs/out/
-server/nextjs/yarn.lock
+server/nextjs/app/node_modules/
+server/nextjs/app/.env
+server/nextjs/app/.next/
+server/nextjs/app/out/
+server/nextjs/app/yarn.lock
 
 # Python
-server/python/__pycache__/
+server/python/app/__pycache__/
+server/python/app/.env
+server/python/app/.venv
 
 # Log files
 npm-debug.log*

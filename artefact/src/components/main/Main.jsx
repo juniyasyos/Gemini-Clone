@@ -103,7 +103,9 @@ const Main = () => {
                       ></p>
                     </div>
                   ) : (
-                    <p>{chat.content}</p>
+                    <div className="result-data-user">
+                      <p>{chat.content}</p>
+                    </div>
                   )}
                 </div>
               </div>
@@ -131,6 +133,11 @@ const Main = () => {
               value={input}
               type="text"
               placeholder="Enter the Prompt Here"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  onSent(input);
+                }
+              }}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
@@ -139,7 +146,7 @@ const Main = () => {
                 src={assets.send_icon}
                 alt=""
                 onClick={() => {
-                  onSent();
+                  onSent(input);
                 }}
               />
             </div>
