@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  frontend-ai:
+    build:
+      context: ./frontend/
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
   api-python:
     build:
       context: ./server/python
