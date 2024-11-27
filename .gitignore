@@ -3,11 +3,11 @@
 Thumbs.db
 .env
 
-# Artefact
-artefact/node_modules/
-artefact/.vite/
-artefact/public/
-artefact/yarn.lock
+# frontend
+frontend/app/node_modules/
+frontend/app/.vite/
+frontend/app/public/
+frontend/app/yarn.lock
 
 # Next.js
 server/nextjs/app/node_modules/
