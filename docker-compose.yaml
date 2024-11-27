@@ -8,6 +8,11 @@ services:
       - "8000:8000"
     environment:
       - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}
+    restart: unless-stopped
+    depends_on:
+      - api-js
+    networks:
+      - gemini-network
 
   api-js:
     build:
@@ -16,3 +21,10 @@ services:
       - "4100:4100"
     environment:
       - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}
+    restart: unless-stopped
+    networks:
+      - gemini-network
+
+networks:
+  gemini-network:
+    driver: bridge

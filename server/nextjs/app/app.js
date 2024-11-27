@@ -20,11 +20,10 @@ app.use(express.json());
 
 // Mengambil API Key dan Password dari variabel lingkungan
 const geminiApiKey = process.env.GEMINI_TOKEN_API_KEY;
-const authPassword = process.env.AUTH_PASSWORD;
+const authPassword = "!zdmAjA0FUCHeB#iIe'z3_A|t2X8OU']D>{k\#Z6";
 
 // Validasi environment variables
 if (!geminiApiKey) throw new Error("GEMINI_TOKEN_API_KEY is not set in .env");
-if (!authPassword) throw new Error("AUTH_PASSWORD is not set in .env");
 
 // Inisialisasi Google Generative AI
 const genAI = new GoogleGenerativeAI(geminiApiKey);

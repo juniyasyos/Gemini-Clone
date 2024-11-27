@@ -1,20 +1,20 @@
-# Gunakan image dasar Python
-FROM python:3.9-slim
+# Gunakan image Python terbaru
+FROM python:3.12-slim
 
-# Set working directory di dalam kontainer
+# Set working directory
 WORKDIR /app
 
-# Copy file requirements.txt ke dalam kontainer
+# Copy file dependency
 COPY requirements.txt /app/
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy seluruh kode aplikasi ke dalam kontainer
+# Copy semua file proyek
 COPY . /app/
 
-# Expose port untuk API
+# Expose port untuk FastAPI
 EXPOSE 8000
 
-# Menjalankan aplikasi FastAPI dengan Uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Jalankan aplikasi menggunakan Uvicorn
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
