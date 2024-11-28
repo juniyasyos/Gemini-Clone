@@ -24,12 +24,11 @@ async function runChat({
     const authToken_py = "2lX8Hg$r&J(/n+E<^AT4&@3mffZW2N)g2P0$@";
     
 
-    const response = await fetch("http://127.0.0.1:4100/gemini", {
-    // const response = await fetch("http://127.0.0.1:8000/gemini", {
+    // const response = await fetch("http://127.0.0.1:4100/gemini", {
+    const response = await fetch("http://127.0.0.1:8000/gemini", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
       },
       body: JSON.stringify({
         message: userMessage.content,

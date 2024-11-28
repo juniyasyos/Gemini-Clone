@@ -20,13 +20,13 @@ if not api_key:
 
 genai.configure(api_key=api_key)
 
-AUTHORIZED_KEYS = "2lX8Hg$r&J(/n+E<^AT4&@3mffZW2N)g2P0$@"
-if not AUTHORIZED_KEYS:
-    raise ValueError("AUTH_PASSWORD is not set")
+# AUTHORIZED_KEYS = "2lX8Hg$r&J(/n+E<^AT4&@3mffZW2N)g2P0$@"
+# if not AUTHORIZED_KEYS:
+#     raise ValueError("AUTH_PASSWORD is not set")
 
-def authenticate(api_key: str = Header(...)):
-    if api_key not in AUTHORIZED_KEYS:
-        raise HTTPException(status_code=403, detail="Unauthorized: Invalid API Key")
+# def authenticate(api_key: str = Header(...)):
+#     if api_key not in AUTHORIZED_KEYS:
+#         raise HTTPException(status_code=403, detail="Unauthorized: Invalid API Key")
     
 app.add_middleware(
     CORSMiddleware,
