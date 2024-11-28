@@ -6,6 +6,7 @@ Thumbs.db
 # frontend
 frontend/app/node_modules/
 frontend/app/.vite/
+frontend/app/dist/
 frontend/app/public/
 frontend/app/yarn.lock
 

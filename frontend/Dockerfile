@@ -26,7 +26,7 @@ FROM nginx:latest
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy React build files dari tahap build sebelumnya
-COPY --from=build build /usr/share/nginx/html
+COPY --from=build dist /usr/share/nginx/html
 
 # Expose the default HTTP port
 EXPOSE 80
