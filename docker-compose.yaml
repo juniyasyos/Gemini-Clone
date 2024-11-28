@@ -18,8 +18,8 @@ services:
     restart: unless-stopped
     # depends_on:
     #   - api-js
-    networks:
-      - gemini-network
+    # networks:
+    #   - gemini-network
 
   # api-js:
   #   build:
