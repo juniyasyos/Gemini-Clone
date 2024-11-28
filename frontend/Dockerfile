@@ -5,7 +5,7 @@ FROM node:latest AS build
 WORKDIR /app
 
 # Install dependencies (package.json dan yarn.lock)
-COPY app/package.json app/yarn.lock ./
+COPY package.json yarn.lock ./
 
 # Validate the Node.js version (Optional but good practice)
 RUN node -v && yarn -v
@@ -26,7 +26,7 @@ FROM nginx:latest
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy React build files dari tahap build sebelumnya
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build build /usr/share/nginx/html
 
 # Expose the default HTTP port
 EXPOSE 80
