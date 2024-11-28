@@ -16,8 +16,8 @@ services:
     environment:
       - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}
     restart: unless-stopped
-    depends_on:
-      - api-js
+    # depends_on:
+    #   - api-js
     networks:
       - gemini-network
 
@@ -32,6 +32,6 @@ services:
   #   networks:
   #     - gemini-network
 
-networks:
-  gemini-network:
-    driver: bridge
+# networks:
+#   gemini-network:
+#     driver: bridge
