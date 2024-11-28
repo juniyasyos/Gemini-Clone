@@ -2,10 +2,10 @@
 FROM node:latest AS build
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /
 
 # Install dependencies (package.json dan yarn.lock)
-COPY package.json yarn.lock /app/
+COPY app/package.json app/yarn.lock ./
 
 # Validate the Node.js version (Optional but good practice)
 RUN node -v && yarn -v
@@ -14,7 +14,7 @@ RUN node -v && yarn -v
 RUN yarn install --frozen-lockfile
 
 # Copy the entire frontend app ke dalam container
-COPY . /app
+COPY app /app
 
 # Build the React app in production mode
 RUN yarn build
@@ -26,7 +26,7 @@ FROM nginx:latest
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy React build files dari tahap build sebelumnya
-COPY --from=build /app/dict /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose the default HTTP port
 EXPOSE 80
