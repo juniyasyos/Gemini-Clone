@@ -25,7 +25,7 @@ async function runChat({
     
 
     // const response = await fetch("http://127.0.0.1:4100/gemini", {
-    const response = await fetch("http://127.0.0.1:8000/gemini", {
+    const response = await fetch("<url-api-python>/gemini", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
