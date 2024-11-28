@@ -3,35 +3,18 @@ version: '3.8'
 services:
   frontend-ai:
     build:
-      context: .
-      dockerfile: frontend/Dockerfile
+      context: ./frontend/          # Mengarah ke folder frontend
+      dockerfile: Dockerfile        # Menunjukkan Dockerfile yang tepat untuk frontend
     ports:
-      - "80:80"
+      - "80:80"                      # Memetakan port 80 untuk akses frontend
+    restart: unless-stopped
 
   api-python:
     build:
-      context: ./server/python
+      context: ./server/python      # Mengarah ke folder server/python
+      dockerfile: Dockerfile        # Dockerfile untuk aplikasi FastAPI
     ports:
-      - "8000:8000"
+      - "8000:8000"                 # Memetakan port 8000 untuk akses FastAPI
     environment:
-      - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}
+      - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}  # Variabel lingkungan untuk API key
     restart: unless-stopped
-    # depends_on:
-    #   - api-js
-    # networks:
-    #   - gemini-network
-
-  # api-js:
-  #   build:
-  #     context: ./server/nextjs
-  #   ports:
-  #     - "4100:4100"
-  #   environment:
-  #     - GEMINI_TOKEN_API_KEY=${GEMINI_TOKEN_API_KEY}
-  #   restart: unless-stopped
-  #   networks:
-  #     - gemini-network
-
-# networks:
-#   gemini-network:
-#     driver: bridge

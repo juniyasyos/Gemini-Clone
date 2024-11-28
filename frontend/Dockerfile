@@ -1,35 +1,35 @@
-# Step 1: Use the latest Node.js image for building the React app
+# Step 1: Gunakan image Node.js terbaru untuk membangun aplikasi React
 FROM node:latest AS build
 
-# Set the working directory in the container
-WORKDIR /
+# Set working directory di dalam container
+WORKDIR /app
 
-# Install dependencies (package.json dan yarn.lock)
-COPY app/package.json app/yarn.lock ./
+# Salin file dependensi (package.json dan yarn.lock)
+COPY app/package.json app/yarn.lock /app/
 
-# Validate the Node.js version (Optional but good practice)
+# Validasi versi Node.js dan Yarn (opsional tapi baik untuk praktik terbaik)
 RUN node -v && yarn -v
 
-# Install dependencies
+# Install dependensi menggunakan yarn
 RUN yarn install --frozen-lockfile
 
-# Copy the entire frontend app ke dalam container
+# Salin seluruh aplikasi React ke dalam container
 COPY app /app
 
-# Build the React app in production mode
+# Bangun aplikasi React dalam mode produksi
 RUN yarn build
 
-# Step 2: Use the latest NGINX image to serve the built application
+# Step 2: Gunakan image NGINX untuk menyajikan aplikasi yang sudah dibangun
 FROM nginx:latest
 
-# Set up NGINX configuration (Optional: customize it if needed)
+# Salin konfigurasi NGINX yang telah disiapkan
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy React build files dari tahap build sebelumnya
-COPY --from=build /app/dist /usr/share/nginx/html
+# Salin build React dari tahap build sebelumnya ke direktori NGINX
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose the default HTTP port
+# Expose port HTTP default (80)
 EXPOSE 80
 
-# Run NGINX in the foreground
+# Jalankan NGINX di foreground
 CMD ["nginx", "-g", "daemon off;"]
