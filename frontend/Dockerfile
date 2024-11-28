@@ -5,7 +5,7 @@ FROM node:latest AS build
 WORKDIR /app
 
 # Salin file dependensi (package.json dan yarn.lock)
-COPY app/package.json app/yarn.lock /app/
+COPY app/package.json /app/
 
 # Validasi versi Node.js dan Yarn (opsional tapi baik untuk praktik terbaik)
 RUN node -v && yarn -v
