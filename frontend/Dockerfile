@@ -5,7 +5,7 @@ FROM node:latest AS build
 WORKDIR /app
 
 # Install dependencies (package.json dan yarn.lock)
-COPY frontend/app/package.json frontend/app/yarn.lock ./
+COPY app/package.json app/yarn.lock ./
 
 # Validate the Node.js version (Optional but good practice)
 RUN node -v && yarn -v
@@ -14,7 +14,7 @@ RUN node -v && yarn -v
 RUN yarn install --frozen-lockfile
 
 # Copy the entire frontend app ke dalam container
-COPY frontend/app /app
+COPY app /app
 
 # Build the React app in production mode
 RUN yarn build
